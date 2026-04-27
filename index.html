@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Agro 🌱</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* HERO SECTION */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                    url("{{ url_for('static', filename='uploads/farming.jpg') }}");     
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        /* BUTTON GROUP */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* GLASS CARD */
+        .glass-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+        }
+
+        nav h2 {
+            color: white;
+        }
+
+        nav div a {
+            margin-left: 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav div a:hover {
+            text-decoration: underline;
+        }
+
+        /* BUTTON STYLE */
+        .btn {
+            padding: 10px 20px;
+            background: #2e7d32;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #1b5e20;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 🌿 NAVBAR -->
+<nav>
+    <h2>🌱 Smart Agro</h2>
+    <div>
+        <a href="/login">👤 User Login</a>
+        <a href="/register">📝 Register</a>
+        <a href="/admin_login">👨‍💼 Admin</a>
+        <a href="/chatbot">chatbot</a>
+    </div>
+</nav>
+
+<!-- 🌾 HERO SECTION -->
+<div class="hero">
+    <div class="glass-box">
+        <h1>🌾 Smart Agro Market</h1>
+        <p>Connecting Farmers 👨‍🌾 & Consumers 🛒 Directly</p>
+
+        <div class="btn-group">
+            <a href="/login" class="btn">👤 Login</a>
+            <a href="/register" class="btn">📝 Register</a>
+            <a href="/admin_login" class="btn">👨‍💼 Admin Panel</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
