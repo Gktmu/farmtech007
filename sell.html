@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Agro Sell 🌾</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+
+            /* 🌾 Rice Field Background */
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                        url("{{ url_for('static', filename='uploads/bigfields.jpg') }}");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 40px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* FORM BOX */
+        .form-box {
+            width: 350px;
+            margin: 60px auto;
+            background: rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.4);
+            text-align: center;
+            color: white;
+        }
+
+        .form-box h2 {
+            margin-bottom: 20px;
+        }
+
+        /* INPUTS */
+        .form-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            outline: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .form-box input::placeholder {
+            color: #eee;
+        }
+
+        /* FILE INPUT */
+        .form-box input[type="file"] {
+            background: rgba(255,255,255,0.1);
+            cursor: pointer;
+        }
+
+        /* BUTTON */
+        .form-box button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #2e7d32;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .form-box button:hover {
+            background: #1b5e20;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/chatbot">chatbot</a>
+
+<!-- 🌿 NAVBAR -->
+<nav>
+    <div>
+        <a href="/home">🏠 Home</a>
+    </div>
+    <div>
+        <a href="/logout">🚪 Logout</a>
+    </div>
+</nav>
+
+<!-- 🌾 FORM -->
+<div class="form-box">
+
+    <h2>🌾 Sell Your Product</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="🌱 Product Name" required>
+        <input type="number" name="price" placeholder="💰 Price ₹" required>
+        <input type="number" name="stock" placeholder="📦 Stock Quantity" required>
+        <input type="file" name="image" required>
+
+        <button>🚀 Upload Product</button>
+    </form>
+
+</div>
+
+</body>
+</html>
