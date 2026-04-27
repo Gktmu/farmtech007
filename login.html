@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Agro Login 👤</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* 🌾 Rice Crop Field Background */
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+                        url("/static/uploads/ricefield.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* GLASS LOGIN BOX */
+        .form-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.4);
+            text-align: center;
+            width: 320px;
+            color: white;
+        }
+
+        .form-box h2 {
+            margin-bottom: 20px;
+        }
+
+        /* INPUTS */
+        .form-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            outline: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .form-box input::placeholder {
+            color: #eee;
+        }
+
+        /* BUTTON */
+        .form-box button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #2e7d32;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .form-box button:hover {
+            background: #1b5e20;
+        }
+
+        /* BACK LINK */
+        .form-box a {
+            display: block;
+            margin-top: 15px;
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .form-box a:hover {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-box">
+
+    <h2>🌾 User Login</h2>
+
+    <form method="POST">
+        <input type="text" name="username" placeholder="👤 Username" required>
+        <input type="password" name="password" placeholder="🔒 Password" required>
+
+        <button>Login</button>
+    </form>
+
+    <a href="/">⬅ Back to Home</a>
+
+</div>
+
+</body>
+</html>
