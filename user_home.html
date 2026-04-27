@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Agro 🛒</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                   url("{{ url_for('static', filename='uploads/greenfield.jpg') }}");     
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 40px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+        }
+
+        nav a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* TITLE */
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 32px;
+        }
+
+        /* PRODUCT GRID */
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 40px;
+        }
+
+        /* PRODUCT CARD */
+        .product-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.4);
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* IMAGE IMPROVED */
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: 0.4s;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            margin: 5px 0;
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #2e7d32;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #1b5e20;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 🌿 NAVBAR -->
+<nav>
+    <div>
+        <a href="/home">🏠 Home</a>
+        {% if session.get('role') == 'farmer' %}
+        <a href="/sell">🌾 Sell</a>
+        {% endif %}
+    </div>
+    <div>
+        <a href="/logout">🚪 Logout</a>
+    </div>
+</nav>
+
+<!-- 🌾 TITLE -->
+<h2>🌾 Available Products</h2>
+
+<!-- 🛒 PRODUCTS -->
+<div class="products-container">
+
+{% for p in products %}
+<div class="product-card">
+
+    <!-- IMAGE WITH DEFAULT CROP FALLBACK -->
+    <img src="{{ url_for('static', filename='uploads/' + p[5]) if p[5] else 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6' }}" alt="Product Image">
+
+    <h3>{{p[2]}}</h3>
+    <p><strong>₹{{p[3]}}</strong></p>
+    <p>Stock: {{p[4]}}</p>
+
+    {% if session.get('role') == 'consumer' %}
+    <a href="/buy/{{p[0]}}" class="btn">🛒 Buy Now</a>
+    {% endif %}
+
+</div>
+{% endfor %}
+
+</div>
+
+</body>
+</html>
