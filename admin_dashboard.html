@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard 📊</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav>
+    <a href="/admin">📊 Dashboard</a>
+    <a href="/admin_add">➕ Add Product</a>
+    <a href="/logout">🚪 Logout</a>
+</nav>
+
+<h2>📦 Products</h2>
+
+<div class="products-container">
+
+{% for p in products %}
+<div class="product-card">
+    <img src="/static/uploads/{{p[5]}}">
+    <h3>{{p[2]}}</h3>
+    <p>₹{{p[3]}}</p>
+    <p>Stock: {{p[4]}}</p>
+
+    <a href="/admin_delete/{{p[0]}}" class="btn">❌ Delete</a>
+</div>
+{% endfor %}
+
+</div>
+
+<hr>
+
+<h2>👤 Users</h2>
+
+<div class="products-container">
+
+{% for u in users %}
+<div class="product-card">
+    <h3>{{u[1]}}</h3>
+    <p>Role: {{u[3]}}</p>
+
+    <a href="/delete_user/{{u[0]}}" class="btn">❌ Remove</a>
+</div>
+{% endfor %}
+
+</div>
+
+</body>
+</html>
